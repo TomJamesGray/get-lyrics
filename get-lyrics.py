@@ -31,7 +31,7 @@ def main():
         print("HTTP request not ok. Error code {}".format(resp.status_code))
 
     dat = resp.json()
-    url = dat["response"]["hits"][1]["result"]["url"]
+    url = dat["response"]["hits"][0]["result"]["url"]
 
     print(scrape(url))
 
