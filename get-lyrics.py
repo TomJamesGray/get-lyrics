@@ -13,7 +13,15 @@ def main():
     parser.add_argument("artist", action="store", type=str, help="The song's artist")
     parser.add_argument("song", action="store", type=str, help="The song's name")
 
-    args = parser.parse_args(sys.argv[1:])
+    if len(sys.argv) == 1:
+        # Read from stdin
+        l = sys.stdin.readlines()
+        l = [x.strip("\n") for x in l]
+        args = parser.parse_args(l)
+
+    else:
+        # Read from command line
+        args = parser.parse_args(sys.argv[1:])
 
     resp = requests.get("https://api.genius.com/search",headers={
         "Authorization":"Bearer {}".format(token)

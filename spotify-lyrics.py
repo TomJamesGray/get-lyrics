@@ -14,12 +14,12 @@ def main():
 
     # Find album name
     for i, x in enumerate(output):
-        if "xesam:album" in x:
+        if "xesam:artist" in x:
             # Bit dirty
-            album_name = output[i + 1].split('"')[1]
+            artist_name = output[i + 2].split('"')[1]
             break
 
-    print(album_name)
+    print(artist_name)
     print(song_name)
 
 
