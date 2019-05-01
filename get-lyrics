@@ -2,14 +2,14 @@
 
 import argparse
 import sys
+import os
 import requests
 from bs4 import BeautifulSoup
 
 
 def main():
     # Read in client access token
-    with open("TOKEN","r") as f:
-        token = f.readline()
+    token = os.environ["GENIUS_CLIENT_TOKEN"]
 
     parser = argparse.ArgumentParser(description="Get the lyrics to a song using Genius")
     parser.add_argument("artist", action="store", type=str, help="The song's artist")
@@ -19,7 +19,6 @@ def main():
         # Read from stdin
         l = sys.stdin.readlines()
         l = [x.strip("\n").replace("\\","") for x in l]
-        print(l)
         args = parser.parse_args(l)
 
     else:
