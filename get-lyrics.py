@@ -16,7 +16,8 @@ def main():
     if len(sys.argv) == 1:
         # Read from stdin
         l = sys.stdin.readlines()
-        l = [x.strip("\n") for x in l]
+        l = [x.strip("\n").replace("\\","") for x in l]
+        print(l)
         args = parser.parse_args(l)
 
     else:
@@ -26,7 +27,6 @@ def main():
     resp = requests.get("https://api.genius.com/search",headers={
         "Authorization":"Bearer {}".format(token)
     }, data={"q":"{} {}".format(args.artist,args.song)})
-
     if resp.status_code != 200:
         print("HTTP request not ok. Error code {}".format(resp.status_code))
 
