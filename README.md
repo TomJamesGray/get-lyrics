@@ -13,3 +13,7 @@ In order to use this you need to get a genius client access token that can
 be generated [Here](https://genius.com/api-clients/new). Then you need to set an
 environment variable of `GENIUS_CLIENT_TOKEN` equal to the client access token,
 to make this persistent put it in your `.bashrc`
+
+## Requirements
+* Beautiful Soup 4
+* Requests
